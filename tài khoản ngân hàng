@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+
+class BankAccount {
+private:
+    std::string owner;
+    double balance;
+
+public:
+    BankAccount(std::string ownerName, double initialBalance = 0.0) : owner(ownerName), balance(initialBalance) {}
+
+    void deposit(double amount) {
+        balance += amount;
+        std::cout << amount << " USD da duoc gui vao tai khoan." << std::endl;
+    }
+
+    void withdrawal(double amount) {
+        if (balance >= amount) {
+            balance -= amount;
+            std::cout << amount << " USD da duoc rut tu tai khoan." << std::endl;
+        } else {
+            std::cout << "Khong du so du." << std::endl;
+        }
+    }
+
+    void display() {
+        std::cout << "Chu tai khoan: " << owner << std::endl;
+        std::cout << "So du: " << balance << " USD" << std::endl;
+    }
+};
+
+int main() {
+    BankAccount myAccount("Quang Huy");
+
+    std::cout << "Thong tin tai khoan ban dau:" << std::endl;
+    myAccount.display();
+
+    myAccount.deposit(700.0);
+    myAccount.withdrawal(200.0);
+
+    std::cout << "\nThong tin tai khoan cap nhat:" << std::endl;
+    myAccount.display();
+
+    return 0;
+}
